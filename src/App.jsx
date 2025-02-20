@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Nav from './Components/nav';
+import Nav from "./Components/Nav";
 import HeroSection from './Components/HeroSection';
 
 

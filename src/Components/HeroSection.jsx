@@ -5,24 +5,24 @@ import { FaArrowCircleRight } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
 const HeroSection = () => {
-    const [foodItems, setFoodItems] = useState([]);
-    const [index, setIndex] = useState(0);
-  
-    useEffect(() => {
-      fetch("/data/category.json") // JSON file should be inside public folder
-        .then((response) => response.json())
-        .then((data) => setFoodItems(data))
-        .catch((error) => console.error("Error fetching food items:", error));
-    }, []);
-  
-    const nextItems = () => {
-      setIndex((prevIndex) => (prevIndex + 5 < foodItems.length ? prevIndex + 5 : 0));
-    };
-  
-    const prevItems = () => {
-      setIndex((prevIndex) => (prevIndex - 5 >= 0 ? prevIndex - 5 : foodItems.length - 5));
-    };
-  
+  const [foodItems, setFoodItems] = useState([]);
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    fetch("/data/category.json") // JSON file should be inside public folder
+      .then((response) => response.json())
+      .then((data) => setFoodItems(data))
+      .catch((error) => console.error("Error fetching food items:", error));
+  }, []);
+
+  const nextItems = () => {
+    setIndex((prevIndex) => (prevIndex + 5 < foodItems.length ? prevIndex + 5 : 0));
+  };
+
+  const prevItems = () => {
+    setIndex((prevIndex) => (prevIndex - 5 >= 0 ? prevIndex - 5 : foodItems.length - 5));
+  };
+
   return (
     <div className='relative bg-[#ff5200] text-white py-16 overflow-hidden'>
       {/* Decorative Images */}
@@ -77,8 +77,10 @@ const HeroSection = () => {
           <div className="max-w-[1200px] mx-auto px-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-center">
               {/* Card 1 */}
-              <div className="relative w-full max-w-[280px] h-[350px] bg-white rounded-xl p-6 shadow-md transition transform duration-300 hover:scale-105 hover:shadow-2xl mx-auto">
-                <div>
+              <div className="relative w-full max-w-[280px] h-[350px] bg-white rounded-xl p-6 shadow-md transition transform duration-300 hover:scale-105 hover:shadow-2xl group mx-auto overflow-hidden">
+                {/* Background Overlay for Faded Effect */}
+                <div className="absolute inset-0 bg-white transition-all duration-300 group-hover:bg-[rgb(0,0,0)] group-hover:bg-opacity-60"></div>
+                <div className=' relative z-10'>
                   <h2 className="text-4xl font-bold text-gray-800">Food Delivery</h2>
                   <p className="text-gray-600">From Restaurants</p>
                   <p className="text-orange-500 font-semibold">Upto 60% OFF</p>
@@ -87,52 +89,57 @@ const HeroSection = () => {
                 <img
                   src="images/card1.png"
                   alt="Food Delivery"
-                  className="absolute bottom-2 right-2 w-16 h-16 object-cover"
+                  className="absolute bottom-2 right-2 w-55 object-cover"
                 />
               </div>
 
               {/* Card 2 */}
-              <div className="relative w-full max-w-[280px] h-[350px] bg-white rounded-xl p-6 shadow-md transition transform duration-300 hover:scale-105 hover:shadow-2xl mx-auto">
-                <div>
+              <div className="relative w-full max-w-[280px] h-[350px] bg-white rounded-xl p-6 shadow-md transition transform duration-300 hover:scale-105 hover:shadow-2xl group mx-auto overflow-hidden">
+
+                {/* Background Overlay for Faded Effect */}
+                <div className="absolute inset-0 bg-white transition-all duration-300 group-hover:bg-[rgb(0,0,0)] group-hover:bg-opacity-60"></div>
+                <div className=' relative z-10'>
                   <h2 className="text-4xl font-bold text-gray-800">Instamart</h2>
                   <p className="text-gray-600">Instant Grocery</p>
                   <p className="text-orange-500 font-semibold">Upto 60% OFF</p>
                 </div>
                 <FaArrowCircleRight className="absolute bottom-3 left-3 text-orange-500 text-3xl cursor-pointer" />
                 <img
-                  src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/North%20Indian.png"
+                  src="/images/instamart.png"
                   alt="Instamart"
-                  className="absolute bottom-2 right-2 w-16 h-16 object-cover"
+                  className="absolute bottom-2 right-2 w-55 object-cover"
                 />
               </div>
-
-              {/* Card 3 */}
-              <div className="relative w-full max-w-[280px] h-[350px] bg-white rounded-xl p-6 shadow-md transition transform duration-300 hover:scale-105 hover:shadow-2xl mx-auto">
-                <div>
+{/* ---------------------------------------card 3------------------------------- */}
+              <div className="relative w-full max-w-[280px] h-[350px] bg-white rounded-xl p-6 shadow-md transition transform duration-300 hover:scale-105 hover:shadow-2xl group mx-auto overflow-hidden">
+                {/* Background Overlay for Faded Effect */}
+                <div className="absolute inset-0 bg-white transition-all duration-300 group-hover:bg-[rgb(0,0,0)] group-hover:bg-opacity-60"></div>
+                <div className=' relative z-10'>
                   <h2 className="text-4xl font-bold text-gray-800">Dineout</h2>
                   <p className="text-gray-600">Eat Out & Save</p>
                   <p className="text-orange-500 font-semibold">Upto 50% OFF</p>
                 </div>
                 <FaArrowCircleRight className="absolute bottom-3 left-3 text-orange-500 text-3xl cursor-pointer" />
                 <img
-                  src="https://i.pinimg.com/736x/82/1f/68/821f6824fe1d6d1f5ed1803d75ef09c3.jpg"
+                  src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/PC_Mweb/North%20Indian.png"
                   alt="Dineout"
-                  className="absolute bottom-2 right-2 w-16 h-16 object-cover"
+                  className="absolute bottom-2 right-2 w-55 object-cover "
                 />
               </div>
-
-              {/* Card 4 */}
-              <div className="relative w-full max-w-[280px] h-[350px] bg-white rounded-xl p-6 shadow-md transition transform duration-300 hover:scale-105 hover:shadow-2xl mx-auto">
-                <div>
+{/* ------------------------------------card 4------------------------------------------- */}
+              <div className="relative w-full max-w-[280px] h-[350px] bg-white rounded-xl p-6 shadow-md transition transform duration-300 hover:scale-105 hover:shadow-2xl group mx-auto overflow-hidden">
+                {/* Background Overlay for Faded Effect */}
+                <div className="absolute inset-0 bg-white transition-all duration-300 group-hover:bg-[rgb(0,0,0)] group-hover:bg-opacity-60"></div>
+                <div className=' relative z-10'>
                   <h2 className="text-4xl font-bold text-gray-800">Genie</h2>
                   <p className="text-gray-600">Pick-Up & Drop</p>
                   <p className="text-orange-500 font-semibold">On-Demand Service</p>
                 </div>
                 <FaArrowCircleRight className="absolute bottom-3 left-3 text-orange-500 text-3xl cursor-pointer" />
                 <img
-                  src="images/card1.png"
+                  src="https://png.pngtree.com/png-clipart/20230504/original/pngtree-3d-food-burger-multi-layered-colorful-three-dimensional-effect-png-image_9136644.png"
                   alt="Genie"
-                  className="absolute bottom-2 right-2 w-16 h-16 object-cover"
+                  className="absolute bottom-2 right-2 w-55 object-cover"
                 />
               </div>
             </div>
@@ -159,9 +166,9 @@ const HeroSection = () => {
             ))}
           </div>
         </section> */}
-{/* ============================================================================================= */}
-          {/*============ This is slider section =======================================*/}
-        <section className=' bg-white'>
+        {/* ============================================================================================= */}
+        {/*============ This is slider section =======================================*/}
+        {/* <section className=' bg-white'>
               <div className="max-w-3xl mx-auto p-4">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold">Food Items</h2>
@@ -179,12 +186,12 @@ const HeroSection = () => {
         ))}
       </div>
     </div>
-              </section>
-            
+              </section> */}
+
       </section>
-       
+
     </div>
-     
+
   );
 };
 

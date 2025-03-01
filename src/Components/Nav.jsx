@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,14 +10,21 @@ const Nav = () => {
         <div className="max-w-[1200px] mx-auto flex items-center justify-between">
           <div className="flex items-center">
             <div className="w-[100px]">
+              <Link to="/">
               <img
-                className="w-[70%] rounded-full border-2 border-white"
+                className="w-[70%] rounded-full border-2 border-white cursor-pointer"
                 src="images/Logo 2.png"
                 alt="Logo"
               />
+              </Link>
+              
             </div>
             <div className="font-black ml-3 text-white text-4xl">
-              Hungry buddy
+            <Link to="/">
+          <h1 className="text-2xl font-bold text-white cursor-pointer">
+             Hungry buddy
+          </h1>
+        </Link>
             </div>
           </div>
 
@@ -31,9 +39,12 @@ const Nav = () => {
             <button className="border-2 rounded-lg px-6 py-3 text-lg transition duration-300 transform hover:scale-105 hover:bg-gray-800">
               Get App
             </button>
-            <button className="bg-black text-white px-6 py-3 text-lg transition duration-300 transform hover:scale-105 hover:bg-white hover:text-black rounded-full">
-              Sign in
-            </button>
+            <Link to="/login">
+              <button className="bg-black text-white px-6 py-3 text-lg transition duration-300 transform hover:scale-105 hover:bg-white hover:text-black rounded-full">
+                Sign in
+              </button>
+            </Link>
+
           </nav>
 
           {/* Mobile Hamburger Menu Button */}
@@ -72,9 +83,11 @@ const Nav = () => {
               <button className="border-2 rounded-lg px-6 py-3 text-lg transition duration-300 transform hover:scale-105 hover:bg-gray-800">
                 Get App
               </button>
-              <button className="bg-black text-white px-6 py-3 text-lg transition duration-300 transform hover:scale-105 hover:bg-white hover:text-black rounded-full">
-                Sign in
-              </button>
+              <Link to="/login">
+                <button className="bg-black text-white px-6 py-3 text-lg transition duration-300 transform hover:scale-105 hover:bg-white hover:text-black rounded-full">
+                  Sign in
+                </button>
+              </Link>
             </nav>
           </div>
         )}

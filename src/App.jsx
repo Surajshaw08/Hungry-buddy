@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Nav from './Components/nav';
+import Nav from './Components/Nav';
 import HeroSection from './Components/HeroSection';
 import Category from './Components/Category';
 import Footer from './Components/Footer';

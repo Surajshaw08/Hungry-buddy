@@ -30,10 +30,10 @@ const Nav = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-10 text-white">
-            <h1 className="cursor-pointer transition duration-300 hover:underline">
+            <h1 className="cursor-pointer transition duration-300 font-bold">
               Hungry corporate
             </h1>
-            <h1 className="cursor-pointer transition duration-300 hover:underline">
+            <h1 className="cursor-pointer transition duration-300 font-bold">
               Contact us
             </h1>
             <button className="border-2 rounded-lg px-6 py-3 text-lg transition duration-300 transform hover:scale-105 hover:bg-gray-800">
@@ -41,7 +41,7 @@ const Nav = () => {
             </button>
             <Link to="/login">
               <button className="bg-black text-white px-6 py-3 text-lg transition duration-300 transform hover:scale-105 hover:bg-white hover:text-black rounded-full">
-                Sign in
+                Sign up
               </button>
             </Link>
 

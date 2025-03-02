@@ -27,7 +27,7 @@ const Category = () => {
 
   return (
     <div className="relative w-full flex items-center justify-center"> 
-    {/* ✅ Chef image left corner pe fix */}
+    {/*  Chef image left corner pe fix */}
     <img 
       src="/images/picture-of-a-chef-5.png" 
       alt="Chef" 

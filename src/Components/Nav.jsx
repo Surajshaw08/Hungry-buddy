@@ -5,8 +5,8 @@ const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="sticky top-0 z-10">
-      <header className="p-3 shadow-xl bg-[#ff5200]">
+    <div className="sticky top-0 z-10 ">
+      <header className="p-3 shadow-xl backdrop-blur-md">
         <div className="max-w-[1200px] mx-auto flex items-center justify-between">
           <div className="flex items-center">
             <div className="w-[100px]">
@@ -19,9 +19,9 @@ const Nav = () => {
               </Link>
               
             </div>
-            <div className="font-black ml-3 text-white text-4xl">
+            <div className="font-black ml-3 text-black text-4xl">
             <Link to="/">
-          <h1 className="text-2xl font-bold text-white cursor-pointer">
+          <h1 className="text-2xl font-bold text-black cursor-pointer">
              Hungry buddy
           </h1>
         </Link>
@@ -29,18 +29,18 @@ const Nav = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-10 text-white">
+          <nav className="hidden md:flex items-center gap-10 text-black">
             <h1 className="cursor-pointer transition duration-300 font-bold">
               Hungry corporate
             </h1>
             <h1 className="cursor-pointer transition duration-300 font-bold">
               Contact us
             </h1>
-            <button className="border-2 rounded-lg px-6 py-3 text-lg transition duration-300 transform hover:scale-105 hover:bg-gray-800">
+            <button className="border-2 rounded-lg px-6 py-3 text-lg transition duration-300 transform hover:scale-105 hover:bg-gray-800 hover:text-white cursor-pointer">
               Get App
             </button>
             <Link to="/login">
-              <button className="bg-black text-white px-6 py-3 text-lg transition duration-300 transform hover:scale-105 hover:bg-white hover:text-black rounded-full">
+              <button className="bg-black text-white px-6 py-3 text-lg transition duration-300 transform hover:scale-105 hover:bg-gray-600 hover:text-black rounded-full cursor-pointer">
                 Sign up
               </button>
             </Link>

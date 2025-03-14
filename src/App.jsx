@@ -11,9 +11,7 @@ import LoginModal from './Components/LoginModal';
 function App() {
   return (
     <Router>
-      {/* Nav Component */}
-      <Nav />
-
+     <Nav/>
       {/* Routes for Different Pages */}
       <Routes>
         {/* Home Page Route */}
@@ -21,8 +19,8 @@ function App() {
           path="/"
           element={
             <>
+              <Category/>
               <HeroSection />
-              <Category />
               <AppDownloadSection/>
               <CitiesSection />
               <Footer />

@@ -10,7 +10,7 @@ const Category = () => {
      
     <div className="relative flex items-center justify-center">
       {/* Background Overlay */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,.6)]"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,.6)] overflow-visible"></div>
       <video src="/images/videobg.mp4" autoPlay loop muted className="w-full h-full object-cover z-[0]" />
 
       {/* Content */}

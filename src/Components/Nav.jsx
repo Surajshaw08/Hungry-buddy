@@ -6,13 +6,13 @@ const Nav = () => {
 
   return (
     <div className="sticky top-0 z-10 ">
-      <header className="p-3 shadow-xl backdrop-blur-md">
+      <header className="p-1 border-b-2 backdrop-blur-md">
         <div className="max-w-[1200px] mx-auto flex items-center justify-between">
           <div className="flex items-center">
             <div className="w-[100px]">
               <Link to="/">
               <img
-                className="w-[70%] rounded-full border-2 border-white cursor-pointer"
+                className="w-[70%] rounded-full border-2 border-black cursor-pointer"
                 src="images/Logo 2.png"
                 alt="Logo"
               />
@@ -36,9 +36,11 @@ const Nav = () => {
             <h1 className="cursor-pointer transition duration-300 font-bold">
               Contact us
             </h1>
+            <Link to="/AppDownloadSection">
             <button className="border-2 rounded-lg px-6 py-3 text-lg transition duration-300 transform hover:scale-105 hover:bg-gray-800 hover:text-white cursor-pointer">
               Get App
             </button>
+            </Link>
             <Link to="/login">
               <button className="bg-black text-white px-6 py-3 text-lg transition duration-300 transform hover:scale-105 hover:bg-gray-600 hover:text-black rounded-full cursor-pointer">
                 Sign up
@@ -72,7 +74,7 @@ const Nav = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden bg-[#ff5200] text-white p-4">
+          <div className="md:hidden text-black p-4">
             <nav className="flex flex-col gap-4">
               <h1 className="cursor-pointer transition duration-300 hover:underline">
                 Hungry corporate

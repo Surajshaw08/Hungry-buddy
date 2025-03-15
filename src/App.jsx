@@ -31,6 +31,8 @@ function App() {
         {/* Login Page Route */}
         <Route path="/login" element={<Login />} />
         <Route path="/loginmodal" element={<LoginModal />} />
+        <Route path="/AppDownloadSection"
+         element={<><AppDownloadSection/><Footer/></>}></Route>
       </Routes>
     </Router>
   );

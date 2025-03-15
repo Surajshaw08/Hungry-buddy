@@ -5,7 +5,7 @@ const AppDownloadSection = () => {
   const [inputType, setInputType] = useState("email");
 
   return (
-    <div className="bg-white flex flex-col md:flex-row items-center justify-center p-6 md:p-30">
+    <div className="bg-white flex flex-col md:flex-row items-center justify-center p-6 md:p-0">
       {/* Left Section: Image */}
       <div className="relative flex justify-center mb-6 md:mb-0">
         <img
@@ -25,7 +25,7 @@ const AppDownloadSection = () => {
         </p>
 
         {/* Form Section */}
-        <div className="flex flex-col md:flex-row items-center md:items-start mt-6 space-y-4 md:space-y-0">
+        <div className="flex flex-col md:flex-row items-center md:items-start mt-6 space-y-4 md:space-y-0 space-x-4">
           {/* Radio Buttons */}
           <div className="flex space-x-4">
             <label className="flex items-center text-gray-700">

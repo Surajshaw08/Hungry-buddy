@@ -1,35 +1,61 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY) {
+      // Scrolling down - hide navbar
+      setIsVisible(false);
+    } else {
+      // Scrolling up - show navbar
+      setIsVisible(true);
+    }
+
+    setLastScrollY(currentScrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]);
 
   return (
-    <div className="sticky top-0 z-10 ">
-      <header className="p-1 border-b-2 backdrop-blur-md">
+    <div
+      className={`fixed top-0 left-0 w-full z-10 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'
+        }`}
+    >
+      <header className="p-1 backdrop-blur-[2px]">
         <div className="max-w-[1200px] mx-auto flex items-center justify-between">
           <div className="flex items-center">
             <div className="w-[100px]">
               <Link to="/">
-              <img
-                className="w-[70%] rounded-full border-2 border-black cursor-pointer"
-                src="images/Logo 2.png"
-                alt="Logo"
-              />
+                <img
+                  className="w-[70%] rounded-full border-3 border-white cursor-pointer"
+                  src="images/Logo 2.png"
+                  alt="Logo"
+                />
               </Link>
-              
             </div>
-            <div className="font-black ml-3 text-black text-4xl">
-            <Link to="/">
-          <h1 className="text-2xl font-bold text-black cursor-pointer">
-             Hungry buddy
-          </h1>
-        </Link>
+            <div className="font-black ml-3 text-white text-4xl">
+              <Link to="/">
+                <h1 className="text-2xl font-bold text-white cursor-pointer">
+                  Hungry buddy
+                </h1>
+              </Link>
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-10 text-black">
+          <nav className="hidden md:flex items-center gap-10 text-white">
             <h1 className="cursor-pointer transition duration-300 font-bold">
               Hungry corporate
             </h1>
@@ -37,16 +63,15 @@ const Nav = () => {
               Contact us
             </h1>
             <Link to="/AppDownloadSection">
-            <button className="border-2 rounded-lg px-6 py-3 text-lg transition duration-300 transform hover:scale-105 hover:bg-gray-800 hover:text-white cursor-pointer">
-              Get App
-            </button>
+              <button className="border-2 rounded-lg px-6 py-3 text-lg transition duration-300 transform hover:scale-105 hover:bg-gray-800 hover:text-white cursor-pointer">
+                Get App
+              </button>
             </Link>
             <Link to="/login">
               <button className="bg-black text-white px-6 py-3 text-lg transition duration-300 transform hover:scale-105 hover:bg-gray-600 hover:text-black rounded-full cursor-pointer">
                 Sign up
               </button>
             </Link>
-
           </nav>
 
           {/* Mobile Hamburger Menu Button */}

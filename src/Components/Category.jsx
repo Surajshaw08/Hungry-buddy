@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { FcSearch } from "react-icons/fc";
 import { ImLocation2 } from "react-icons/im";
 import { FaArrowCircleRight } from "react-icons/fa";
@@ -6,11 +7,32 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const Category = () => {
 
+  const [query, setQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+
+  const handleInputChange = async (e) => {
+    const value = e.target.value;
+    setQuery(value);
+
+    if (value.length > 2) {
+      try {
+        const response = await axios.get(
+          `https://cors-anywhere.herokuapp.com/https://nominatim.openstreetmap.org/search?format=json&q=${value}`
+        );
+        setSuggestions(response.data);
+      } catch (error) {
+        console.error("Error fetching location data:", error);
+      }
+    } else {
+      setSuggestions([]);
+    }
+  };
+
   return (
      
-    <div className="relative flex items-center justify-center">
+    <div className="relative flex items-center justify-center mt-0 pt-0">
       {/* Background Overlay */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,.6)] overflow-visible"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-[rgba(0,0,0,.8)] overflow-visible"></div>
       <video src="/images/videobg.mp4" autoPlay loop muted className="w-full h-full object-cover z-[0]" />
 
       {/* Content */}
@@ -31,9 +53,27 @@ const Category = () => {
             <ImLocation2 className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600" />
             <input
               type="text"
+              value={query}
+              onChange={handleInputChange}
               placeholder="Enter your delivery location"
               className="w-full p-4 pl-10 pr-4 rounded-full bg-white text-black border border-gray-300 focus:outline-none"
             />
+            {suggestions.length > 0 && (
+        <ul className="absolute z-10 w-full bg-white border border-gray-300 mt-1 rounded-md max-h-60 overflow-y-auto shadow-lg text-black">
+          {suggestions.map((suggestion) => (
+            <li
+              key={suggestion.place_id}
+              className="p-3 hover:bg-gray-100 cursor-pointer"
+              onClick={() => {
+                setQuery(suggestion.display_name);
+                setSuggestions([]);
+              }}
+            >
+              {suggestion.display_name}
+            </li>
+          ))}
+        </ul>
+      )}
           </div>
 
           {/* Search Input */}
